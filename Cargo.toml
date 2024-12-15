@@ -11,7 +11,14 @@ license = "MIT OR Apache-2.0"
 categories = ["no-std", "data-structures", "encoding"]
 edition = "2021"
 rust-version = "1.60"
-exclude = [".git*", ".editorconfig", ".circleci"]
+exclude = [
+    ".git*",
+    ".editorconfig",
+    ".circleci",
+    "Makefile.toml",
+    "clippy.toml",
+    "rustfmt.toml",
+]
 
 [features]
 default = ["std"]
