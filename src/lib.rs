@@ -64,7 +64,7 @@
 #![allow(unknown_lints)]
 #![allow(clippy::verbose_bit_mask, clippy::cast_lossless)]
 #![cfg_attr(not(feature = "std"), no_std)]
-#![doc(html_root_url = "https://docs.rs/float16/0.1.0")]
+#![doc(html_root_url = "https://docs.rs/float16/0.1.3")]
 #![doc(test(attr(deny(warnings), allow(unused))))]
 #![cfg_attr(docsrs, feature(doc_auto_cfg))]
 
@@ -75,8 +75,8 @@ mod leading_zeros;
 mod slice;
 mod try_from;
 
-pub use bfloat::bf16;
-pub use binary16::f16;
+pub use bfloat::{bf16, bf16 as Bf16};
+pub use binary16::{f16, f16 as F16};
 pub use error::TryFromFloatError;
 
 #[cfg(not(target_arch = "spirv"))]
