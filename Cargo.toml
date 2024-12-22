@@ -10,6 +10,7 @@ keywords = ["f16", "bfloat16", "no_std"]
 license = "MIT OR Apache-2.0"
 categories = ["no-std", "data-structures", "encoding"]
 edition = "2021"
+# FIXME: Remove build script once the MSRV goes to 1.70, which halves the build time.
 rust-version = "1.60"
 exclude = [
     ".git*",
