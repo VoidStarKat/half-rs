@@ -456,6 +456,7 @@ These were all changes for half, which `float16` is a fork of.
 [#100]: https://github.com/starkat99/half-rs/issues/100
 [#103]: https://github.com/starkat99/half-rs/issues/103
 [#107]: https://github.com/starkat99/half-rs/issues/107
+[#110]: https://github.com/starkat99/half-rs/issues/110
 
 <!-- Contributors -->
 
@@ -479,6 +480,7 @@ These were all changes for half, which `float16` is a fork of.
 [@wx-csy]: https://github.com/wx-csy
 [@eiz]: https://github.com/eiz
 [@comath]: https://github.com/comath
+[@FL33TW00D]: https://github.com/FL33TW00D
 
 <!-- Versions -->
 
