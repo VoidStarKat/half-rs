@@ -40,6 +40,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Disabled hardware instrinsics by default for `f16` to `f64` and `f64` to `f16` conversions, due to lossy results with an intermediate `f32` (see [#161](https://github.com/starkat99/half-rs/issues/116)).
 - Silenced most clippy lints.
 
+- Suppressed unexpected_cfg lint warnings on newer versions of stable Rust.
+- Resolved ambiguous rustdoc warnings due to new unstable `f16` primitive in compiler.
+
 # Half Changelog
 
 These were all changes for half, which `float16` is a fork of.
