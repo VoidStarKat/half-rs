@@ -42,7 +42,7 @@ jobs:
       uses: dtolnay/rust-toolchain@master
       with:
         toolchain: ${{ matrix.rust }}
-        target: ${{ matrix.target }}-unknown-linux-gnu
+        targets: ${{ matrix.target }}-unknown-linux-gnu
         components: clippy,rustfmt
 
     - name: Windows Install Rust toolchain
@@ -50,20 +50,19 @@ jobs:
       uses: dtolnay/rust-toolchain@master
       with:
         toolchain: ${{ matrix.rust }}
-        target: ${{ matrix.target }}-pc-windows-msvc
+        targets: ${{ matrix.target }}-pc-windows-msvc
         components: clippy,rustfmt
 
     - name: Install Cargo Make
       if: ${{ matrix.target == 'x86_64' }}
       uses: davidB/rust-cargo-make@v1
 
-    - name: cargo-make ci-flow
+    - run: cargo make ci-flow
       if: ${{ matrix.target == 'x86_64' }}
-      run: cargo make ci-flow
 
     - name: linux cargo-make build-only
       if: ${{ matrix.target != 'x86_64' && matrix.os == 'ubuntu-latest' }}
-      run: cargo build --target ${{ matrix.target }}-unknown-linux-gnu
+      run: cargo build --all-features --target ${{ matrix.target }}-unknown-linux-gnu
 
     - name: windows cargo-make build-only
       if: ${{ matrix.target != 'x86_64' && matrix.os == 'windows-latest' }}
@@ -84,11 +83,7 @@ jobs:
         with:
           toolchain: nightly
           components: miri
-      - name: Run Miri
-        uses: actions-rs/cargo@v1
-        with:
-          command: miri
-          args: test
+      - run: cargo miri test
         env:
           MIRIFLAGS: -Zmiri-strict-provenance
 
