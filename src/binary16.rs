@@ -736,7 +736,7 @@ impl f16 {
     #[inline]
     #[must_use]
     pub const fn max(self, other: f16) -> f16 {
-        if gt(other, self) && !other.is_nan() {
+        if self.is_nan() || gt(other, self) {
             other
         } else {
             self
@@ -759,7 +759,7 @@ impl f16 {
     #[inline]
     #[must_use]
     pub const fn min(self, other: f16) -> f16 {
-        if lt(other, self) && !other.is_nan() {
+        if self.is_nan() || lt(other, self) {
             other
         } else {
             self
@@ -2120,5 +2120,51 @@ mod test {
             f64::from_bits(0b0_01111111000_1110000001100000000000000000000000000000000000000000),
             None,
         );
+    }
+
+    #[test]
+    fn test_max() {
+        let a = f16::from_f32(0.0);
+        let b = f16::from_f32(42.0);
+        assert_eq!(a.max(b), b);
+
+        let a = f16::from_f32(42.0);
+        let b = f16::from_f32(0.0);
+        assert_eq!(a.max(b), a);
+
+        let a = f16::NAN;
+        let b = f16::from_f32(42.0);
+        assert_eq!(a.max(b), b);
+
+        let a = f16::from_f32(42.0);
+        let b = f16::NAN;
+        assert_eq!(a.max(b), a);
+
+        let a = f16::NAN;
+        let b = f16::NAN;
+        assert!(a.max(b).is_nan());
+    }
+
+    #[test]
+    fn test_min() {
+        let a = f16::from_f32(0.0);
+        let b = f16::from_f32(42.0);
+        assert_eq!(a.min(b), a);
+
+        let a = f16::from_f32(42.0);
+        let b = f16::from_f32(0.0);
+        assert_eq!(a.min(b), b);
+
+        let a = f16::NAN;
+        let b = f16::from_f32(42.0);
+        assert_eq!(a.min(b), b);
+
+        let a = f16::from_f32(42.0);
+        let b = f16::NAN;
+        assert_eq!(a.min(b), a);
+
+        let a = f16::NAN;
+        let b = f16::NAN;
+        assert!(a.min(b).is_nan());
     }
 }
