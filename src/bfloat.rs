@@ -511,7 +511,7 @@ impl bf16 {
     #[inline]
     #[must_use]
     pub fn max(self, other: bf16) -> bf16 {
-        if other > self && !other.is_nan() {
+        if self.is_nan() || other > self {
             other
         } else {
             self
@@ -534,7 +534,7 @@ impl bf16 {
     #[inline]
     #[must_use]
     pub fn min(self, other: bf16) -> bf16 {
-        if other < self && !other.is_nan() {
+        if self.is_nan() || other < self {
             other
         } else {
             self
@@ -1876,5 +1876,51 @@ mod test {
         } else {
             f.0 == roundtrip.0
         }
+    }
+    
+    #[test]
+    fn test_max() {
+        let a = bf16::from_f32(0.0);
+        let b = bf16::from_f32(42.0);
+        assert_eq!(a.max(b), b);
+        
+        let a = bf16::from_f32(42.0);
+        let b = bf16::from_f32(0.0);
+        assert_eq!(a.max(b), a);
+
+        let a = bf16::NAN;
+        let b = bf16::from_f32(42.0);
+        assert_eq!(a.max(b), b);
+
+        let a = bf16::from_f32(42.0);
+        let b = bf16::NAN;
+        assert_eq!(a.max(b), a);
+
+        let a = bf16::NAN;
+        let b = bf16::NAN;
+        assert!(a.max(b).is_nan());
+    }
+
+    #[test]
+    fn test_min() {
+        let a = bf16::from_f32(0.0);
+        let b = bf16::from_f32(42.0);
+        assert_eq!(a.min(b), a);
+        
+        let a = bf16::from_f32(42.0);
+        let b = bf16::from_f32(0.0);
+        assert_eq!(a.min(b), b);
+
+        let a = bf16::NAN;
+        let b = bf16::from_f32(42.0);
+        assert_eq!(a.min(b), b);
+
+        let a = bf16::from_f32(42.0);
+        let b = bf16::NAN;
+        assert_eq!(a.min(b), a);
+
+        let a = bf16::NAN;
+        let b = bf16::NAN;
+        assert!(a.min(b).is_nan());
     }
 }
