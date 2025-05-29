@@ -20,7 +20,7 @@ jobs:
       RUSTUP_MAX_RETRIES: 10
       CARGO_TERM_COLOR: always
       RUST_BACKTRACE: full
-      RUSTFLAGS: "-D warnings -A unnecessary_transmutes"
+      RUSTFLAGS: "-D warnings"
       CARGO_PROFILE_DEV_DEBUG: 0
       CARGO_PROFILE_TEST_DEBUG: 0
       CARGO_PROFILE_BENCH_DEBUG: 0
