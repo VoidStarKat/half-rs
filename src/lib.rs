@@ -65,7 +65,6 @@
 #![doc(html_root_url = "https://docs.rs/float16/0.1.3")]
 #![doc(test(attr(deny(warnings), allow(unused))))]
 #![cfg_attr(docsrs, feature(doc_auto_cfg))]
-
 // Until updated to use newly stabilized `from_bits`, disable new lint warning about the transmutes
 #![allow(unknown_lints, unnecessary_transmutes)]
 #![warn(unknown_lints)]
