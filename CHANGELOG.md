@@ -4,6 +4,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- `min` and `max` incorrectly propagate `NaN` values when `self` is `NaN`. Fixes [#126],
+  by [@mgottscho].
 
 ## [0.1.3][v0.1.3] - 2024-12-21 <a name="0.1.3"></a>
 
@@ -460,6 +463,7 @@ These were all changes for half, which `float16` is a fork of.
 [#103]: https://github.com/starkat99/half-rs/issues/103
 [#107]: https://github.com/starkat99/half-rs/issues/107
 [#110]: https://github.com/starkat99/half-rs/issues/110
+[#126]: https://github.com/starkat99/half-rs/issues/126
 
 <!-- Contributors -->
 
@@ -483,7 +487,7 @@ These were all changes for half, which `float16` is a fork of.
 [@wx-csy]: https://github.com/wx-csy
 [@eiz]: https://github.com/eiz
 [@comath]: https://github.com/comath
-[@FL33TW00D]: https://github.com/FL33TW00D
+[@mgottscho]: https://github.com/mgottscho
 
 <!-- Versions -->
 
