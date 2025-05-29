@@ -1877,13 +1877,13 @@ mod test {
             f.0 == roundtrip.0
         }
     }
-    
+
     #[test]
     fn test_max() {
         let a = bf16::from_f32(0.0);
         let b = bf16::from_f32(42.0);
         assert_eq!(a.max(b), b);
-        
+
         let a = bf16::from_f32(42.0);
         let b = bf16::from_f32(0.0);
         assert_eq!(a.max(b), a);
@@ -1906,7 +1906,7 @@ mod test {
         let a = bf16::from_f32(0.0);
         let b = bf16::from_f32(42.0);
         assert_eq!(a.min(b), a);
-        
+
         let a = bf16::from_f32(42.0);
         let b = bf16::from_f32(0.0);
         assert_eq!(a.min(b), b);

@@ -1967,7 +1967,7 @@ mod test {
         let a = f16::from_f32(0.0);
         let b = f16::from_f32(42.0);
         assert_eq!(a.max(b), b);
-        
+
         let a = f16::from_f32(42.0);
         let b = f16::from_f32(0.0);
         assert_eq!(a.max(b), a);
@@ -1990,7 +1990,7 @@ mod test {
         let a = f16::from_f32(0.0);
         let b = f16::from_f32(42.0);
         assert_eq!(a.min(b), a);
-        
+
         let a = f16::from_f32(42.0);
         let b = f16::from_f32(0.0);
         assert_eq!(a.min(b), b);
