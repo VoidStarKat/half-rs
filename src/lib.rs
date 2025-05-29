@@ -66,6 +66,10 @@
 #![doc(test(attr(deny(warnings), allow(unused))))]
 #![cfg_attr(docsrs, feature(doc_auto_cfg))]
 
+// Until updated to use newly stabilized `from_bits`, disable new lint warning about the transmutes
+#![allow(unknown_lints, unnecessary_transmutes)]
+#![warn(unknown_lints)]
+
 mod bfloat;
 mod binary16;
 mod error;
