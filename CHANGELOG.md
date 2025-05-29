@@ -4,6 +4,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- `min` and `max` incorrectly propagate `NaN` values when `self` is `NaN`. Fixes [#126],
+  by [@mgottscho].
 
 ## [2.6.0] - 2024-04-08 <a name="2.6.0"></a>
 ### Changed
@@ -361,6 +364,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [#103]: https://github.com/starkat99/half-rs/issues/103
 [#107]: https://github.com/starkat99/half-rs/issues/107
 [#110]: https://github.com/starkat99/half-rs/issues/110
+[#126]: https://github.com/starkat99/half-rs/issues/126
 
 [@tspiteri]: https://github.com/tspiteri
 [@PSeitz]: https://github.com/PSeitz
@@ -385,6 +389,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [@FL33TW00D]: https://github.com/FL33TW00D
 [@kpreid]: https://github.com/kpreid
 [@usamoi]: https://github.com/usamoi
+[@mgottscho]: https://github.com/mgottscho
 
 
 [Unreleased]: https://github.com/starkat99/half-rs/compare/v2.6.0...HEAD
