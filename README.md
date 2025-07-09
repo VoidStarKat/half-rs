@@ -39,7 +39,7 @@ See the [crate documentation](https://docs.rs/half/) for more details.
   dependency on the [`serde`](https://crates.io/crates/serde) crate.
 
 - **`num-traits`** — Enable `ToPrimitive`, `FromPrimitive`, `ToBytes`, `FromBytes`, `Num`, `Float`,
-  `FloatCore` and `Bounded` trait implementations from the
+  `FloatCore`, `Signed`, and `Bounded` trait implementations from the
   [`num-traits`](https://crates.io/crates/num-traits) crate.
 
 - **`bytemuck`** — Enable `Zeroable` and `Pod` trait implementations from the

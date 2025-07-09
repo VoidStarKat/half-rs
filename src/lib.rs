@@ -89,7 +89,7 @@
 //!
 //! - **`num-traits`** — Adds support for the [`num-traits`] crate by implementing [`ToPrimitive`],
 //!   [`FromPrimitive`], [`ToBytes`], `FromBytes`, [`AsPrimitive`], [`Num`], [`Float`],
-//!   [`FloatCore`], and [`Bounded`] traits for both [`struct@f16`] and [`struct@bf16`].
+//!   [`FloatCore`], [`Signed`], and [`Bounded`] traits for both [`struct@f16`] and [`struct@bf16`].
 //!
 //! - **`bytemuck`** — Adds support for the [`bytemuck`] crate by implementing [`Zeroable`] and
 //!   [`Pod`] traits for both [`struct@f16`] and [`struct@bf16`].
@@ -149,6 +149,7 @@
 [`Num`]: ::num_traits::Num
 [`Float`]: ::num_traits::Float
 [`FloatCore`]: ::num_traits::float::FloatCore
+[`Signed`]: ::num_traits::Signed
 [`Bounded`]: ::num_traits::Bounded"
 )]
 #![cfg_attr(
