@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `min` and `max` incorrectly propagate `NaN` values when `self` is `NaN`. Fixes [#126],
   by [@mgottscho].
 
+### Added
+- New `num-traits` implementations: `Signed` for `f16` and `bf16`.
+
 ## [2.6.0] - 2024-04-08 <a name="2.6.0"></a>
 ### Changed
 - Fixed some incorrect minimum supported versions of dependencies that weren't caught due to
