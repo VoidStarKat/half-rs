@@ -19,6 +19,7 @@ std = ["alloc"]
 use-intrinsics = []                         # Deprecated
 alloc = []
 rand_distr = ["dep:rand", "dep:rand_distr"]
+zerocopy = []
 
 [dependencies]
 cfg-if = "1.0.0"
@@ -31,9 +32,10 @@ serde = { version = "1.0", default-features = false, features = [
 num-traits = { version = "0.2.16", default-features = false, features = [
     "libm",
 ], optional = true }
-zerocopy = { version = "0.8.23", default-features = false, features = [
+zerocopy = { version = "0.8.26", default-features = false, features = [
     "derive",
-], optional = true }
+    "simd",
+] }
 rand = { version = "0.9.0", default-features = false, features = [
     "thread_rng",
 ], optional = true }

@@ -266,8 +266,9 @@ pub mod prelude {
 // Keep this module private to crate
 mod private {
     use crate::{bf16, f16};
+    use zerocopy::{FromBytes, IntoBytes, Immutable};
 
-    pub trait SealedHalf {}
+    pub trait SealedHalf: FromBytes + IntoBytes + Immutable {}
 
     impl SealedHalf for f16 {}
     impl SealedHalf for bf16 {}
