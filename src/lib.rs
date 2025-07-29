@@ -227,7 +227,6 @@ extern crate alloc;
 
 mod bfloat;
 mod binary16;
-mod leading_zeros;
 #[cfg(feature = "num-traits")]
 mod num_traits;
 

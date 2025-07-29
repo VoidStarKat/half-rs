@@ -1,5 +1,5 @@
 #![allow(dead_code, unused_imports)]
-use crate::leading_zeros::leading_zeros_u16;
+
 use core::mem;
 
 #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
@@ -640,7 +640,7 @@ pub(crate) const fn f16_to_f32_fallback(i: u16) -> f32 {
     // Check for subnormals, which will be normalized by adjusting exponent
     if half_exp == 0 {
         // Calculate how much to adjust the exponent by
-        let e = leading_zeros_u16(half_man as u16) - 6;
+        let e = u16::leading_zeros(half_man as u16) - 6;
 
         // Rebias and adjust exponent
         let exp = (127 - 15 - e) << 23;
@@ -691,7 +691,7 @@ pub(crate) const fn f16_to_f64_fallback(i: u16) -> f64 {
     // Check for subnormals, which will be normalized by adjusting exponent
     if half_exp == 0 {
         // Calculate how much to adjust the exponent by
-        let e = leading_zeros_u16(half_man as u16) - 6;
+        let e = u16::leading_zeros(half_man as u16) - 6;
 
         // Rebias and adjust exponent
         let exp = ((1023 - 15 - e) as u64) << 52;
