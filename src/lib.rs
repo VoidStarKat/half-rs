@@ -66,6 +66,7 @@
 //! | ------------ | ------------------ | ----- |
 //! | `x86`/`x86_64` | `f16c` | This supports conversion to/from [`struct@f16`] only (including vector SIMD) and does not support any [`struct@bf16`] or arithmetic operations. |
 //! | `aarch64` | `fp16` | This supports all operations on [`struct@f16`] only. |
+//! | `loongarch64` | `lsx` | This supports conversion to/from [`struct@f16`] only (including vector SIMD) and does not support any [`struct@bf16`] or arithmetic operations. |
 //!
 //! # Cargo Features
 //!
@@ -214,6 +215,14 @@
     future_incompatible
 )]
 #![cfg_attr(not(target_arch = "spirv"), warn(missing_debug_implementations))]
+#![cfg_attr(
+    target_arch = "loongarch64",
+    feature(
+        stdarch_loongarch,
+        stdarch_loongarch_feature_detection,
+        loongarch_target_feature
+    )
+)]
 #![allow(clippy::verbose_bit_mask, clippy::cast_lossless, unexpected_cfgs)]
 #![cfg_attr(not(feature = "std"), no_std)]
 #![doc(html_root_url = "https://docs.rs/half/2.6.0")]
