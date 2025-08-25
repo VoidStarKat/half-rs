@@ -28,6 +28,7 @@ for specific CPU features which avoids the runtime overhead and works in a `no_s
 | ------------ | ------------------ | ----- |
 | `x86`/`x86_64` | `f16c` | This supports conversion to/from `f16` only (including vector SIMD) and does not support any `bf16` or arithmetic operations. |
 | `aarch64` | `fp16` | This supports all operations on `f16` only. |
+| `loongarch64` | `lsx` | This supports conversion to/from `f16` only (including vector SIMD) and does not support any `bf16` or arithmetic operations. |
 
 ### More Documentation
 
