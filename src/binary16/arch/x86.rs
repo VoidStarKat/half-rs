@@ -1,7 +1,7 @@
 #![cfg(has_x86_intrinsics)]
 #![allow(unused_imports)]
 // NOTE: We feature gate this so it will never happen.
-#![allow(clippy::incompatible_msrv)]
+#![allow(unknown_lints, clippy::incompatible_msrv)]
 
 #[cfg(target_arch = "x86")]
 use core::arch::x86::_mm_cvtps_ph;

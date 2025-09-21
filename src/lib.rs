@@ -60,7 +60,6 @@
 //! [`std`]: https://doc.rust-lang.org/std/
 //! [`binary16`]: https://en.wikipedia.org/wiki/Half-precision_floating-point_format
 //! [`bfloat16`]: https://en.wikipedia.org/wiki/Bfloat16_floating-point_format
-#![allow(unknown_lints)]
 #![allow(clippy::verbose_bit_mask, clippy::cast_lossless, unexpected_cfgs)]
 #![cfg_attr(not(feature = "std"), no_std)]
 #![doc(html_root_url = "https://docs.rs/float16/0.1.3")]
