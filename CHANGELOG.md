@@ -4,41 +4,45 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.1.4][v0.1.4] - 2024-12-21 <a name="0.1.4"></a>
+
 ### Fixed
+
 - `min` and `max` incorrectly propagate `NaN` values when `self` is `NaN`. Fixes [#126],
   by [@mgottscho].
 
 ## [0.1.3][v0.1.3] - 2024-12-21 <a name="0.1.3"></a>
 
-## Added
+### Added
 
 - Add camel-case variants of `f16` as `F16` and `bf16` as `Bf16` for future-proofing.
 
 ## [0.1.2][v0.1.2] - 2024-12-12 <a name="0.1.2"></a>
 
-## Added
+### Added
 
 - Added lossless `from_f*_lossless` functions and `TryFrom` implementations which will never have rounding error.
 
 ## [0.1.1][v0.1.1] - 2024-12-12 <a name="0.1.1"></a>
 
-## Changed
+### Changed
 
 - Fixed package documentation for better attribution.
 
 ## [0.1.0][v0.1.0] - 2024-12-12 <a name="0.1.0"></a>
 
-## Changed
+### Changed
 
 - Forked the repository
 - Lowered the MSRV to 1.60.0.
 - Changed from `repr(transparent)` to `repr(C)`.
 
-## Removed
+### Removed
 
 - All features, including `zerocopy`, `serde`, `bytemuck`, `num-traits`, and `alloc` support.
 
-## Fixed
+### Fixed
 
 - Disabled hardware instrinsics by default for `f16` to `f64` and `f64` to `f16` conversions, due to lossy results with an intermediate `f32` (see [#161](https://github.com/starkat99/half-rs/issues/116)).
 - Silenced most clippy lints.
@@ -46,7 +50,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Suppressed unexpected_cfg lint warnings on newer versions of stable Rust.
 - Resolved ambiguous rustdoc warnings due to new unstable `f16` primitive in compiler.
 
-# Half Changelog
+## Half Changelog
 
 These were all changes for half, which `float16` is a fork of.
 
@@ -492,6 +496,7 @@ These were all changes for half, which `float16` is a fork of.
 <!-- Versions -->
 
 [Unreleased]: https://github.com/starkat99/half-rs/compare/v2.4.1...HEAD
+[v0.1.4]: https://github.com/Alexhuszagh/float16/compare/v0.1.3...v0.1.4
 [v0.1.3]: https://github.com/Alexhuszagh/float16/compare/v0.1.2...v0.1.3
 [v0.1.2]: https://github.com/Alexhuszagh/float16/compare/v0.1.1...v0.1.2
 [v0.1.1]: https://github.com/Alexhuszagh/float16/compare/v0.1.0...v0.1.1
