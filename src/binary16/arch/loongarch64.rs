@@ -1,7 +1,6 @@
-use core::{mem::MaybeUninit, ptr};
-
 #[cfg(target_arch = "loongarch64")]
 use core::arch::loongarch64::{lsx_vfcvt_h_s, lsx_vfcvtl_s_h, m128, m128i};
+use core::{mem::MaybeUninit, ptr};
 
 /////////////// loongarch64 lsx/lasx ////////////////
 
@@ -46,12 +45,7 @@ pub(super) unsafe fn f32x4_to_f16x4_lsx(v: &[f32; 4]) -> [u16; 4] {
 pub(super) unsafe fn f16x4_to_f64x4_lsx(v: &[u16; 4]) -> [f64; 4] {
     let array = f16x4_to_f32x4_lsx(v);
     // Let compiler vectorize this regular cast for now.
-    [
-        array[0] as f64,
-        array[1] as f64,
-        array[2] as f64,
-        array[3] as f64,
-    ]
+    [array[0] as f64, array[1] as f64, array[2] as f64, array[3] as f64]
 }
 
 #[target_feature(enable = "lsx")]

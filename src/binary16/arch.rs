@@ -13,10 +13,9 @@ mod aarch64;
 mod loongarch64;
 
 macro_rules! convert_fn {
-    (if x86_feature("f16c") { $f16c:expr }
-    else if aarch64_feature("fp16") { $aarch64:expr }
-    else if loongarch64_feature("lsx") { $loongarch64:expr }
-    else { $fallback:expr }) => {
+    (
+        if x86_feature("f16c") { $f16c:expr }else if aarch64_feature("fp16") { $aarch64:expr }else if loongarch64_feature("lsx") { $loongarch64:expr }else { $fallback:expr }
+    ) => {
         cfg_if::cfg_if! {
             // Use intrinsics directly when a compile target or using no_std
             if #[cfg(all(
