@@ -1571,6 +1571,7 @@ mod test {
     }
 
     #[test]
+    #[cfg_attr(miri, ignore)]
     fn test_bf16_to_f64() {
         let f = bf16::from_f64(7.0);
         assert_eq!(f.to_f64(), 7.0f64);
@@ -1644,6 +1645,7 @@ mod test {
 
     #[test]
     #[allow(clippy::erasing_op, clippy::identity_op)]
+    #[cfg_attr(miri, ignore)]
     fn round_to_even_f32() {
         // smallest positive subnormal = 0b0.0000_001 * 2^-126 = 2^-133
         let min_sub = bf16::from_bits(1);
@@ -1739,6 +1741,7 @@ mod test {
 
     #[test]
     #[allow(clippy::erasing_op, clippy::identity_op)]
+    #[cfg_attr(miri, ignore)]
     fn round_to_even_f64() {
         // smallest positive subnormal = 0b0.0000_001 * 2^-126 = 2^-133
         let min_sub = bf16::from_bits(1);

@@ -1394,6 +1394,7 @@ mod test {
     }
 
     #[test]
+    #[cfg_attr(miri, ignore)]
     fn test_f16_consts() {
         // DIGITS
         let digits = ((f16::MANTISSA_DIGITS as f32 - 1.0) * 2f32.log10()).floor() as u32;
@@ -1621,6 +1622,7 @@ mod test {
     }
 
     #[test]
+    #[cfg_attr(miri, ignore)]
     fn test_f16_to_f32() {
         let f = f16::from_f32(7.0);
         assert_eq!(f.to_f32(), 7.0f32);
@@ -1642,6 +1644,7 @@ mod test {
     }
 
     #[test]
+    #[cfg_attr(miri, ignore)]
     fn test_f16_to_f64() {
         let f = f16::from_f64(7.0);
         assert_eq!(f.to_f64(), 7.0f64);
@@ -1717,6 +1720,7 @@ mod test {
 
     #[test]
     #[allow(clippy::erasing_op, clippy::identity_op)]
+    #[cfg_attr(miri, ignore)]
     fn round_to_even_f32() {
         // smallest positive subnormal = 0b0.0000_0000_01 * 2^-14 = 2^-24
         let min_sub = f16::from_bits(1);
@@ -1812,6 +1816,7 @@ mod test {
 
     #[test]
     #[allow(clippy::erasing_op, clippy::identity_op)]
+    #[cfg_attr(miri, ignore)]
     fn round_to_even_f64() {
         // smallest positive subnormal = 0b0.0000_0000_01 * 2^-14 = 2^-24
         let min_sub = f16::from_bits(1);
