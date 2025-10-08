@@ -11,7 +11,7 @@ use crate::{bf16, binary16::arch, f16};
 #[cfg(feature = "alloc")]
 #[allow(unused_imports)]
 use alloc::{vec, vec::Vec};
-use zerocopy::{transmute_ref, transmute_mut};
+use zerocopy::{transmute_mut, transmute_ref};
 
 /// Extensions to `[f16]` and `[bf16]` slices to support conversion and reinterpret operations.
 ///
