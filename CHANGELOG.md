@@ -4,12 +4,25 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- `zerocopy` is now a required dependency. The optional `zerocopy` crate feature is deprecated.
+  This change is to ensure better code safety and prevent potential unsound behavior.
+- Git repository URL has changed due to GitHub user name change. Old URL is redirected.
+
+### Added
+- New `num-traits` implementations: `Signed` for `f16` and `bf16`. By [@djsell].
+- `loongarch64` `lsx` hardware intrinsic support for `f16` conversions. By [@heiher].
+- Implemented `Weight` trait from `rand` crate for `f16` and `bf16` with `rand` optional cargo
+  feature. By [@majian4work].
+
 ### Fixed
 - `min` and `max` incorrectly propagate `NaN` values when `self` is `NaN`. Fixes [#126],
   by [@mgottscho].
+- Suppressed warnings from new `unnecessary_transmutes` lint.
 
-### Added
-- New `num-traits` implementations: `Signed` for `f16` and `bf16`.
+### Removed 
+- `doc_auto_cfg` feature has been removed from docs.rs documentation due to removal of rust
+  feature.
 
 ## [2.6.0] - 2024-04-08 <a name="2.6.0"></a>
 ### Changed
@@ -393,6 +406,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [@kpreid]: https://github.com/kpreid
 [@usamoi]: https://github.com/usamoi
 [@mgottscho]: https://github.com/mgottscho
+[@djsell]: https://github.com/djsell
+[@heiher]: https://github.com/heiher
+[@majian4work]: https://github.com/majian4work
 
 
 [Unreleased]: https://github.com/starkat99/half-rs/compare/v2.6.0...HEAD

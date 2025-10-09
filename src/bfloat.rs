@@ -1515,7 +1515,7 @@ mod test {
         assert!(nan32.is_nan() && nan32.is_sign_positive());
         assert!(neg_nan32.is_nan() && neg_nan32.is_sign_negative());
 
-        // f32/f64 NaN conversion sign is non-deterministic: https://github.com/starkat99/half-rs/issues/103
+        // f32/f64 NaN conversion sign is non-deterministic: https://github.com/VoidStarKat/half-rs/issues/103
         assert!(neg_nan32_from_64.is_nan());
         assert!(nan32_from_64.is_nan());
         assert!(nan16_from_64.is_nan());
@@ -1542,7 +1542,7 @@ mod test {
         assert!(nan32.is_nan() && nan32.is_sign_positive());
         assert!(neg_nan32.is_nan() && neg_nan32.is_sign_negative());
 
-        // // f32/f64 NaN conversion sign is non-deterministic: https://github.com/starkat99/half-rs/issues/103
+        // // f32/f64 NaN conversion sign is non-deterministic: https://github.com/VoidStarKat/half-rs/issues/103
         assert!(nan32_from_16.is_nan());
         assert!(neg_nan32_from_16.is_nan());
         assert!(nan64_from_16.is_nan());

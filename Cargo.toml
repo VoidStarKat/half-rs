@@ -19,7 +19,7 @@ std = ["alloc"]
 use-intrinsics = []                         # Deprecated
 alloc = []
 rand_distr = ["dep:rand", "dep:rand_distr"]
-zerocopy = []
+zerocopy = []                               # Deprecated
 
 [dependencies]
 cfg-if = "1.0.0"
