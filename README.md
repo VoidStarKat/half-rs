@@ -45,9 +45,6 @@ See the [crate documentation](https://docs.rs/half/) for more details.
 - **`bytemuck`** — Enable `Zeroable` and `Pod` trait implementations from the
   [`bytemuck`](https://crates.io/crates/bytemuck) crate.
 
-- **`zerocopy`** — Enable `IntoBytes` and `FromBytes` trait implementations from the 
-  [`zerocopy`](https://crates.io/crates/zerocopy) crate.
-
 - **`rand_distr`** — Enable sampling from distributions like `StandardUniform` and `StandardNormal` 
   from the [`rand_distr`](https://crates.io/crates/rand_distr) crate.
 

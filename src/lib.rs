@@ -95,9 +95,6 @@
 //! - **`bytemuck`** — Adds support for the [`bytemuck`] crate by implementing [`Zeroable`] and
 //!   [`Pod`] traits for both [`struct@f16`] and [`struct@bf16`].
 //!
-//! - **`zerocopy`** — Adds support for the [`zerocopy`] crate by implementing [`IntoBytes`] and
-//!   [`FromBytes`] traits for both [`struct@f16`] and [`struct@bf16`].
-//!
 //! - **`rand_distr`** — Adds support for the [`rand_distr`] crate by implementing [`Distribution`]
 //!   and other traits for both [`struct@f16`] and [`struct@bf16`].
 //!
