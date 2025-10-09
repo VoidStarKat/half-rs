@@ -223,7 +223,7 @@
 )]
 #![allow(clippy::verbose_bit_mask, clippy::cast_lossless, unexpected_cfgs)]
 #![cfg_attr(not(feature = "std"), no_std)]
-#![doc(html_root_url = "https://docs.rs/half/2.6.0")]
+#![doc(html_root_url = "https://docs.rs/half/2.7.0")]
 #![doc(test(attr(deny(warnings), allow(unused))))]
 // Until updated to use newly stabilized `from_bits`, disable new lint warning about the transmutes
 #![allow(unknown_lints, unnecessary_transmutes)]

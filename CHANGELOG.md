@@ -4,6 +4,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [2.7.0] - 2025-10-08 <a name="2.7.0"></a>
 ### Changed
 - `zerocopy` is now a required dependency. The optional `zerocopy` crate feature is deprecated.
   This change is to ensure better code safety and prevent potential unsound behavior.
@@ -24,7 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `doc_auto_cfg` feature has been removed from docs.rs documentation due to removal of rust
   feature.
 
-## [2.6.0] - 2024-04-08 <a name="2.6.0"></a>
+## [2.6.0] - 2025-04-08 <a name="2.6.0"></a>
 ### Changed
 - Fixed some incorrect minimum supported versions of dependencies that weren't caught due to
   improper `Cargo.lock`:
@@ -35,7 +37,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - `f16` and `bf16` now implement `Immutable` and `KnownLayout` for `zerocopy` crate. By [@usamoi].
 
-## [2.5.0] - 2024-03-13 <a name="2.5.0"></a>
+## [2.5.0] - 2025-03-13 <a name="2.5.0"></a>
 ### Changed
 - Updated optional dependencies to latest major versions: 
   * `zercopy` 0.6 -> 0.8
@@ -411,7 +413,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [@majian4work]: https://github.com/majian4work
 
 
-[Unreleased]: https://github.com/starkat99/half-rs/compare/v2.6.0...HEAD
+[Unreleased]: https://github.com/starkat99/half-rs/compare/v2.7.0...HEAD
+[2.7.0]: https://github.com/starkat99/half-rs/compare/v2.6.0...v2.7.0
 [2.6.0]: https://github.com/starkat99/half-rs/compare/v2.5.0...v2.6.0
 [2.5.0]: https://github.com/starkat99/half-rs/compare/v2.4.1...v2.5.0
 [2.4.1]: https://github.com/starkat99/half-rs/compare/v2.4.0...v2.4.1
