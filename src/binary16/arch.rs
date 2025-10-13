@@ -8,7 +8,7 @@ mod x86;
 #[cfg(target_arch = "aarch64")]
 mod aarch64;
 
-#[cfg(target_arch = "loongarch64")]
+#[cfg(all(feature = "nightly", target_arch = "loongarch64"))]
 mod loongarch64;
 
 macro_rules! convert_fn {
@@ -31,6 +31,7 @@ macro_rules! convert_fn {
                 $aarch64
             }
             else if #[cfg(all(
+                feature = "nightly",
                 target_arch = "loongarch64",
                 target_feature = "lsx"
             ))] {
@@ -62,6 +63,7 @@ macro_rules! convert_fn {
             }
             else if #[cfg(all(
                 feature = "std",
+                feature = "nightly",
                 target_arch = "loongarch64",
             ))] {
                 use std::arch::is_loongarch_feature_detected;

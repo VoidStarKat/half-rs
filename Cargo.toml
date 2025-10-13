@@ -20,6 +20,7 @@ use-intrinsics = []                         # Deprecated
 alloc = []
 rand_distr = ["dep:rand", "dep:rand_distr"]
 zerocopy = []                               # Deprecated
+nightly = []
 
 [dependencies]
 cfg-if = "1.0.0"
