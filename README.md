@@ -53,7 +53,7 @@ See the [crate documentation](https://docs.rs/half/) for more details.
 - **`aribtrary`** -- Enable fuzzing support with [`arbitrary`](https://crates.io/crates/arbitrary) 
   crate by implementing `Arbitrary` trait.
 
-- **`nightly`** -- Enable nightly-only features.
+- **`nightly`** -- Enable nightly-only features (currently `loongarch64` intrinsics).
 
 ### Hardware support
 
@@ -61,11 +61,11 @@ The following list details hardware support for floating point types in this cra
 library, runtime CPU target detection will be used. To get the most performance benefits, compile
 for specific CPU features which avoids the runtime overhead and works in a `no_std` environment.
 
-| Architecture | CPU Target Feature | Notes |
-| ------------ | ------------------ | ----- |
-| `x86`/`x86_64` | `f16c` | This supports conversion to/from `f16` only (including vector SIMD) and does not support any `bf16` or arithmetic operations. |
-| `aarch64` | `fp16` | This supports all operations on `f16` only. |
-| `loongarch64` | `lsx` | This supports conversion to/from `f16` only (including vector SIMD) and does not support any `bf16` or arithmetic operations. |
+| Architecture | CPU Target Feature | Notes                                                                                                                                                  |
+| ------------ | ------------------ |--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `x86`/`x86_64` | `f16c` | This supports conversion to/from `f16` only (including vector SIMD) and does not support any `bf16` or arithmetic operations.                          |
+| `aarch64` | `fp16` | This supports all operations on `f16` only.                                                                                                            |
+| `loongarch64` | `lsx` | (`nightly` feature only) This supports conversion to/from `f16` only (including vector SIMD) and does not support any `bf16` or arithmetic operations. |
 
 ### More Documentation
 

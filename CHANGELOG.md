@@ -5,6 +5,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.7.1] - 2025-10-13 <a name="2.7.1"></a>
+### Fixed
+- `loongarch64` `lsx` hardware intrinsics for `f16` conversions now enabled only under
+  `nightly` cargo feature, fixing compile errors on stable Rust.
+
 ## [2.7.0] - 2025-10-08 <a name="2.7.0"></a>
 ### Changed
 - `zerocopy` is now a required dependency. The optional `zerocopy` crate feature is deprecated.
@@ -413,7 +418,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [@majian4work]: https://github.com/majian4work
 
 
-[Unreleased]: https://github.com/starkat99/half-rs/compare/v2.7.0...HEAD
+[Unreleased]: https://github.com/starkat99/half-rs/compare/v2.7.1...HEAD
+[2.7.1]: https://github.com/starkat99/half-rs/compare/v2.7.0...v2.7.1
 [2.7.0]: https://github.com/starkat99/half-rs/compare/v2.6.0...v2.7.0
 [2.6.0]: https://github.com/starkat99/half-rs/compare/v2.5.0...v2.6.0
 [2.5.0]: https://github.com/starkat99/half-rs/compare/v2.4.1...v2.5.0
