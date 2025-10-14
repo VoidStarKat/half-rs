@@ -53,6 +53,8 @@ See the [crate documentation](https://docs.rs/half/) for more details.
 - **`aribtrary`** -- Enable fuzzing support with [`arbitrary`](https://crates.io/crates/arbitrary) 
   crate by implementing `Arbitrary` trait.
 
+- **`nightly`** -- Enable nightly-only features.
+
 ### Hardware support
 
 The following list details hardware support for floating point types in this crate. When using `std`

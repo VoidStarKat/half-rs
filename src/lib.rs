@@ -103,6 +103,8 @@
 //! - **`aribtrary`** -- Enable fuzzing support with [`arbitrary`] crate by implementing
 //!   [`Arbitrary`] trait.
 //!
+//! - **`nightly`** -- Enable nightly-only features.
+//!
 //! [`alloc`]: https://doc.rust-lang.org/alloc/
 //! [`std`]: https://doc.rust-lang.org/std/
 //! [`binary16`]: https://en.wikipedia.org/wiki/Half-precision_floating-point_format
@@ -214,7 +216,7 @@
 )]
 #![cfg_attr(not(target_arch = "spirv"), warn(missing_debug_implementations))]
 #![cfg_attr(
-    target_arch = "loongarch64",
+    all(feature = "nightly", target_arch = "loongarch64"),
     feature(
         stdarch_loongarch,
         stdarch_loongarch_feature_detection,
