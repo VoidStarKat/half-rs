@@ -52,7 +52,7 @@
 //! # Hardware support
 //!
 //! Hardware support for these conversions and arithmetic will be used
-//! whenever hardware support is available—either through instrinsics or targeted assembly—although
+//! whenever hardware support is available—either through intrinsics or targeted assembly—although
 //! a nightly Rust toolchain may be required for some hardware. When hardware supports it the
 //! functions and traits in the [`slice`][mod@slice] and [`vec`] modules will also use vectorized
 //! SIMD intructions for increased efficiency.
@@ -83,7 +83,7 @@
 //!   `alloc` feature automatically.
 //!
 //!   Enabling the `std` feature enables runtime CPU feature detection of hardware support.
-//!   Without this feature detection, harware is only used when compiler target supports them.
+//!   Without this feature detection, hardware is only used when compiler target supports them.
 //!
 //! - **`serde`** — Adds support for the [`serde`] crate by implementing [`Serialize`] and
 //!   [`Deserialize`] traits for both [`struct@f16`] and [`struct@bf16`].
@@ -100,7 +100,7 @@
 //!
 //! - **`rkyv`** -- Enable zero-copy deserializtion with [`rkyv`] crate.
 //!
-//! - **`aribtrary`** -- Enable fuzzing support with [`arbitrary`] crate by implementing
+//! - **`arbitrary`** -- Enable fuzzing support with [`arbitrary`] crate by implementing
 //!   [`Arbitrary`] trait.
 //!
 //! - **`nightly`** -- Enable nightly-only features.
