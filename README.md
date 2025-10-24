@@ -10,7 +10,7 @@ a.k.a "half" format, as well as a `bf16` type implementing the
 
 The `f16` and `bf16` types attempt to match existing Rust floating point type functionality where possible, and provides both conversion operations (such as to/from `f32` and `f64`) and basic
 arithmetic operations. Hardware support for these operations will be used whenever hardware support
-is available—either through instrinsics or targeted assembly—although a nightly Rust toolchain may
+is available—either through intrinsics or targeted assembly—although a nightly Rust toolchain may
 be required for some hardware.
 
 This crate provides [`no_std`](https://rust-embedded.github.io/book/intro/no-std.html) support so can easily be used in embedded code where a smaller float format is most useful.
@@ -33,7 +33,7 @@ See the [crate documentation](https://docs.rs/half/) for more details.
   `alloc` feature.
 
   Enabling the `std` feature enables runtime CPU feature detection of hardware support.
-  Without this feature detection, harware is only used when compiler target supports them.
+  Without this feature detection, hardware is only used when compiler target supports them.
 
 - **`serde`** - Implement `Serialize` and `Deserialize` traits for `f16` and `bf16`. This adds a
   dependency on the [`serde`](https://crates.io/crates/serde) crate.
@@ -50,7 +50,7 @@ See the [crate documentation](https://docs.rs/half/) for more details.
 
 - **`rkyv`** -- Enable zero-copy deserializtion with [`rkyv`](https://crates.io/crates/rkyv) crate.
 
-- **`aribtrary`** -- Enable fuzzing support with [`arbitrary`](https://crates.io/crates/arbitrary) 
+- **`arbitrary`** -- Enable fuzzing support with [`arbitrary`](https://crates.io/crates/arbitrary) 
   crate by implementing `Arbitrary` trait.
 
 - **`nightly`** -- Enable nightly-only features (currently `loongarch64` intrinsics).
