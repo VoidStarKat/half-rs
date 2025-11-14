@@ -246,7 +246,12 @@ pub mod slice;
 pub mod vec;
 
 pub use bfloat::bf16;
+#[cfg(feature = "rkyv")]
+pub use bfloat::Archivedbf16;
+
 pub use binary16::f16;
+#[cfg(feature = "rkyv")]
+pub use binary16::Archivedf16;
 
 #[cfg(feature = "rand_distr")]
 mod rand_distr;

@@ -1320,6 +1320,15 @@ impl<'de> serde::de::Visitor<'de> for Visitor {
     }
 }
 
+#[cfg(feature = "rkyv")]
+impl Archivedbf16 {
+    /// Convert an archived `bf16` back to native `bf16`.
+    #[inline]
+    pub fn to_native(&self) -> bf16 {
+        bf16(self.0.to_native())
+    }
+}
+
 #[allow(
     clippy::cognitive_complexity,
     clippy::float_cmp,
