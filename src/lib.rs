@@ -231,11 +231,14 @@
 #![allow(unknown_lints, unnecessary_transmutes)]
 #![warn(unknown_lints)]
 
+
+
 #[cfg(feature = "alloc")]
 extern crate alloc;
 
 mod bfloat;
-mod binary16;
+#[allow(missing_docs)]
+pub mod binary16;
 mod leading_zeros;
 #[cfg(feature = "num-traits")]
 mod num_traits;
