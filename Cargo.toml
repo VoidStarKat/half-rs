@@ -2,7 +2,7 @@
 name = "half"
 # Remember to keep in sync with html_root_url crate attribute
 version = "2.7.1"
-authors = ["Kathryn Long <squeeself@gmail.com>"]
+authors = ["Kathryn Long <voidstarkat@robothearts.ca>"]
 description = "Half-precision floating point f16 and bf16 types for Rust implementing the IEEE 754-2008 standard binary16 and bfloat16 types."
 repository = "https://github.com/VoidStarKat/half-rs"
 readme = "README.md"
@@ -11,7 +11,7 @@ license = "MIT OR Apache-2.0"
 categories = ["no-std", "data-structures", "encoding"]
 edition = "2021"
 rust-version = "1.81"
-exclude = [".git*", ".editorconfig", ".circleci"]
+exclude = [".git*", ".editorconfig", ".circleci", ".mailmap"]
 
 [features]
 default = ["std"]
