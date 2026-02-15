@@ -5,8 +5,13 @@ use core::mem;
 #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
 mod x86;
 
+#[allow(missing_docs)]
 #[cfg(target_arch = "aarch64")]
-mod aarch64;
+pub mod aarch64;
+
+#[cfg(target_arch = "arm")]
+mod arm;
+
 
 #[cfg(all(feature = "nightly", target_arch = "loongarch64"))]
 mod loongarch64;
