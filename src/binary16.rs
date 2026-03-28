@@ -957,7 +957,7 @@ impl LowerExp for f16 {
 #[cfg(not(target_arch = "spirv"))]
 impl UpperExp for f16 {
     fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error> {
-        write!(f, "{:E}", self.to_f32())
+        UpperExp::fmt(&self.to_f32(), f)
     }
 }
 
