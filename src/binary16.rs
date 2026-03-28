@@ -950,7 +950,7 @@ impl Display for f16 {
 #[cfg(not(target_arch = "spirv"))]
 impl LowerExp for f16 {
     fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error> {
-        write!(f, "{:e}", self.to_f32())
+        LowerExp::fmt(&self.to_f32(), f)
     }
 }
 
