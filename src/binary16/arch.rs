@@ -617,6 +617,7 @@ pub(crate) const fn f32_to_f16_fallback(value: f32) -> u16 {
 pub(crate) const fn f64_to_f16_fallback(value: f64) -> u16 {
     // Convert to raw bytes, truncating the last 32-bits of mantissa; that precision will always
     // be lost on half-precision.
+    // However we use it for rounding purposes.
     // TODO: Replace mem::transmute with to_bits() once to_bits is const-stabilized
     let val: u64 = unsafe { mem::transmute::<f64, u64>(value) };
     let x = (val >> 32) as u32;
@@ -625,6 +626,7 @@ pub(crate) const fn f64_to_f16_fallback(value: f64) -> u16 {
     let sign = x & 0x8000_0000u32;
     let exp = x & 0x7FF0_0000u32;
     let man = x & 0x000F_FFFFu32;
+    let man_low = val as u32;
 
     // Check for all exponent bits being set, which is Infinity or NaN
     if exp == 0x7FF0_0000u32 {
@@ -661,7 +663,7 @@ pub(crate) const fn f64_to_f16_fallback(value: f64) -> u16 {
         let mut half_man = man >> (11 - half_exp);
         // Check for rounding (see comment above functions)
         let round_bit = 1 << (10 - half_exp);
-        if (man & round_bit) != 0 && (man & (3 * round_bit - 1)) != 0 {
+        if (man & round_bit) != 0 && ((man & (3 * round_bit - 1)) != 0 || man_low != 0) {
             half_man += 1;
         }
         // No exponent for subnormals
@@ -673,7 +675,7 @@ pub(crate) const fn f64_to_f16_fallback(value: f64) -> u16 {
     let half_man = man >> 10;
     // Check for rounding (see comment above functions)
     let round_bit = 0x0000_0200u32;
-    if (man & round_bit) != 0 && (man & (3 * round_bit - 1)) != 0 {
+    if (man & round_bit) != 0 && ((man & (3 * round_bit - 1)) != 0  || man_low != 0) {
         // Round it
         ((half_sign | half_exp | half_man) + 1) as u16
     } else {
