@@ -405,7 +405,7 @@ impl num_traits::float::Float for f16 {
 
     #[inline]
     fn mul_add(self, a: Self, b: Self) -> Self {
-        Self::from_f32(self.to_f32().mul_add(a.to_f32(), b.to_f32()))
+        Self::from_f64(self.to_f64().mul_add(a.to_f64(), b.to_f64()))
     }
 
     #[inline]
@@ -1176,7 +1176,7 @@ impl num_traits::float::Float for bf16 {
 
     #[inline]
     fn mul_add(self, a: Self, b: Self) -> Self {
-        Self::from_f32(self.to_f32().mul_add(a.to_f32(), b.to_f32()))
+        Self::from_f64(self.to_f64().mul_add(a.to_f64(), b.to_f64()))
     }
 
     #[inline]
