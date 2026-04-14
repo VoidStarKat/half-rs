@@ -37,7 +37,7 @@ zerocopy = { version = "0.8.26", default-features = false, features = [
     "derive",
     "simd",
 ] }
-rand = { version = "0.9.0", default-features = false, features = [
+rand = { version = "0.9.3", default-features = false, features = [
     "thread_rng",
 ], optional = true }
 rand_distr = { version = "0.5.0", default-features = false, optional = true }
@@ -51,7 +51,7 @@ crunchy = "0.2.2"
 criterion = "0.5"
 quickcheck = "1.0"
 quickcheck_macros = "1.0"
-rand = "0.9.0"
+rand = "0.9.3"
 crunchy = "0.2.2"
 
 [[bench]]
