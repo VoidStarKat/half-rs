@@ -39,7 +39,14 @@ pub(crate) mod convert;
     feature = "rkyv",
     derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize)
 )]
-#[cfg_attr(feature = "rkyv", rkyv(resolver = Bf16Resolver))]
+#[cfg_attr(
+    feature = "rkyv",
+    rkyv(
+        resolver = Bf16Resolver,
+        derive(zerocopy::FromBytes, zerocopy::IntoBytes,
+               zerocopy::Immutable, zerocopy::KnownLayout),
+    )
+)]
 #[cfg_attr(feature = "bytemuck", derive(Zeroable, Pod))]
 #[cfg_attr(kani, derive(kani::Arbitrary))]
 #[derive(FromBytes, Immutable, IntoBytes, KnownLayout)]
