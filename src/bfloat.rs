@@ -39,11 +39,18 @@ pub(crate) mod convert;
     feature = "rkyv",
     derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize)
 )]
-#[cfg_attr(feature = "rkyv", rkyv(resolver = Bf16Resolver))]
+#[cfg_attr(feature = "rkyv", rkyv(resolver = Bf16Resolver, derive(Copy, Clone)))]
 #[cfg_attr(feature = "bytemuck", derive(Zeroable, Pod))]
 #[cfg_attr(kani, derive(kani::Arbitrary))]
 #[derive(FromBytes, Immutable, IntoBytes, KnownLayout)]
 pub struct bf16(u16);
+
+// SAFETY: `Archivedbf16` is `#[repr(C)](rkyv::rend::u16_le)` — 2 bytes,
+// every bit pattern valid, no padding, no `UnsafeCell`.
+#[cfg(all(feature = "rkyv", feature = "bytemuck"))]
+unsafe impl Zeroable for Archivedbf16 {}
+#[cfg(all(feature = "rkyv", feature = "bytemuck"))]
+unsafe impl Pod for Archivedbf16 {}
 
 impl bf16 {
     /// Constructs a [`struct@bf16`] value from the raw bits.
