@@ -38,7 +38,14 @@ pub(crate) mod arch;
     feature = "rkyv",
     derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize)
 )]
-#[cfg_attr(feature = "rkyv", rkyv(resolver = F16Resolver))]
+#[cfg_attr(
+    feature = "rkyv",
+    rkyv(
+        resolver = F16Resolver,
+        derive(zerocopy::FromBytes, zerocopy::IntoBytes,
+               zerocopy::Immutable, zerocopy::KnownLayout),
+    )
+)]
 #[cfg_attr(feature = "bytemuck", derive(Zeroable, Pod))]
 #[cfg_attr(kani, derive(kani::Arbitrary))]
 #[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
