@@ -313,6 +313,7 @@ dependencies = [
  "rkyv",
  "serde",
  "zerocopy",
+ "zerocopy-derive",
 ]
 
 [[package]]
