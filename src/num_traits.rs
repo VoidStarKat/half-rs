@@ -1,5 +1,4 @@
 use crate::{bf16, f16};
-use core::cmp::Ordering;
 use core::{num::FpCategory, ops::Div};
 use num_traits::{
     AsPrimitive, Bounded, FloatConst, FromBytes, FromPrimitive, Num, NumCast, One, ToBytes,
@@ -238,32 +237,14 @@ impl num_traits::float::FloatCore for f16 {
         self.is_sign_negative()
     }
 
+    #[inline]
     fn min(self, other: Self) -> Self {
-        match self.partial_cmp(&other) {
-            None => {
-                if self.is_nan() {
-                    other
-                } else {
-                    self
-                }
-            }
-            Some(Ordering::Greater) | Some(Ordering::Equal) => other,
-            Some(Ordering::Less) => self,
-        }
+        self.min(other)
     }
 
+    #[inline]
     fn max(self, other: Self) -> Self {
-        match self.partial_cmp(&other) {
-            None => {
-                if self.is_nan() {
-                    other
-                } else {
-                    self
-                }
-            }
-            Some(Ordering::Greater) | Some(Ordering::Equal) => self,
-            Some(Ordering::Less) => other,
-        }
+        self.max(other)
     }
 
     #[inline]
@@ -1009,32 +990,14 @@ impl num_traits::float::FloatCore for bf16 {
         self.is_sign_negative()
     }
 
+    #[inline]
     fn min(self, other: Self) -> Self {
-        match self.partial_cmp(&other) {
-            None => {
-                if self.is_nan() {
-                    other
-                } else {
-                    self
-                }
-            }
-            Some(Ordering::Greater) | Some(Ordering::Equal) => other,
-            Some(Ordering::Less) => self,
-        }
+        self.min(other)
     }
 
+    #[inline]
     fn max(self, other: Self) -> Self {
-        match self.partial_cmp(&other) {
-            None => {
-                if self.is_nan() {
-                    other
-                } else {
-                    self
-                }
-            }
-            Some(Ordering::Greater) | Some(Ordering::Equal) => self,
-            Some(Ordering::Less) => other,
-        }
+        self.max(other)
     }
 
     #[inline]
@@ -1582,3 +1545,65 @@ macro_rules! impl_signed {
 
 impl_signed!(f16);
 impl_signed!(bf16);
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    #[cfg(feature = "std")]
+    use ::num_traits::float::Float;
+    use ::num_traits::float::FloatCore;
+
+    #[test]
+    fn test_float_core_min_max_signed_zero() {
+        for (pos_zero, neg_zero) in [(f16::ZERO, f16::NEG_ZERO)] {
+            assert_eq!(
+                FloatCore::min(pos_zero, neg_zero).to_bits(),
+                neg_zero.to_bits()
+            );
+            assert_eq!(
+                FloatCore::min(neg_zero, pos_zero).to_bits(),
+                neg_zero.to_bits()
+            );
+            assert_eq!(
+                FloatCore::max(pos_zero, neg_zero).to_bits(),
+                pos_zero.to_bits()
+            );
+            assert_eq!(
+                FloatCore::max(neg_zero, pos_zero).to_bits(),
+                pos_zero.to_bits()
+            );
+            #[cfg(feature = "std")]
+            {
+                assert_eq!(Float::min(pos_zero, neg_zero).to_bits(), neg_zero.to_bits());
+                assert_eq!(Float::min(neg_zero, pos_zero).to_bits(), neg_zero.to_bits());
+                assert_eq!(Float::max(pos_zero, neg_zero).to_bits(), pos_zero.to_bits());
+                assert_eq!(Float::max(neg_zero, pos_zero).to_bits(), pos_zero.to_bits());
+            }
+        }
+        for (pos_zero, neg_zero) in [(bf16::ZERO, bf16::NEG_ZERO)] {
+            assert_eq!(
+                FloatCore::min(pos_zero, neg_zero).to_bits(),
+                neg_zero.to_bits()
+            );
+            assert_eq!(
+                FloatCore::min(neg_zero, pos_zero).to_bits(),
+                neg_zero.to_bits()
+            );
+            assert_eq!(
+                FloatCore::max(pos_zero, neg_zero).to_bits(),
+                pos_zero.to_bits()
+            );
+            assert_eq!(
+                FloatCore::max(neg_zero, pos_zero).to_bits(),
+                pos_zero.to_bits()
+            );
+            #[cfg(feature = "std")]
+            {
+                assert_eq!(Float::min(pos_zero, neg_zero).to_bits(), neg_zero.to_bits());
+                assert_eq!(Float::min(neg_zero, pos_zero).to_bits(), neg_zero.to_bits());
+                assert_eq!(Float::max(pos_zero, neg_zero).to_bits(), pos_zero.to_bits());
+                assert_eq!(Float::max(neg_zero, pos_zero).to_bits(), pos_zero.to_bits());
+            }
+        }
+    }
+}

@@ -509,6 +509,8 @@ impl bf16 {
     pub fn max(self, other: bf16) -> bf16 {
         if self.is_nan() || other > self {
             other
+        } else if (self.0 | other.0) & 0x7FFFu16 == 0 {
+            bf16(self.0 & other.0)
         } else {
             self
         }
@@ -532,6 +534,8 @@ impl bf16 {
     pub fn min(self, other: bf16) -> bf16 {
         if self.is_nan() || other < self {
             other
+        } else if (self.0 | other.0) & 0x7FFFu16 == 0 {
+            bf16(self.0 | other.0)
         } else {
             self
         }
@@ -1921,5 +1925,21 @@ mod test {
         let a = bf16::NAN;
         let b = bf16::NAN;
         assert!(a.min(b).is_nan());
+    }
+
+    #[test]
+    fn test_min_max_signed_zero() {
+        let pos_zero = bf16::ZERO;
+        let neg_zero = bf16::NEG_ZERO;
+
+        assert_eq!(pos_zero.min(neg_zero).to_bits(), neg_zero.to_bits());
+        assert_eq!(neg_zero.min(pos_zero).to_bits(), neg_zero.to_bits());
+        assert_eq!(pos_zero.min(pos_zero).to_bits(), pos_zero.to_bits());
+        assert_eq!(neg_zero.min(neg_zero).to_bits(), neg_zero.to_bits());
+
+        assert_eq!(pos_zero.max(neg_zero).to_bits(), pos_zero.to_bits());
+        assert_eq!(neg_zero.max(pos_zero).to_bits(), pos_zero.to_bits());
+        assert_eq!(pos_zero.max(pos_zero).to_bits(), pos_zero.to_bits());
+        assert_eq!(neg_zero.max(neg_zero).to_bits(), neg_zero.to_bits());
     }
 }

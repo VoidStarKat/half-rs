@@ -520,6 +520,8 @@ impl f16 {
     pub fn max(self, other: f16) -> f16 {
         if self.is_nan() || other > self {
             other
+        } else if (self.0 | other.0) & 0x7FFFu16 == 0 {
+            f16(self.0 & other.0)
         } else {
             self
         }
@@ -543,6 +545,8 @@ impl f16 {
     pub fn min(self, other: f16) -> f16 {
         if self.is_nan() || other < self {
             other
+        } else if (self.0 | other.0) & 0x7FFFu16 == 0 {
+            f16(self.0 | other.0)
         } else {
             self
         }
@@ -2007,5 +2011,21 @@ mod test {
         let a = f16::NAN;
         let b = f16::NAN;
         assert!(a.min(b).is_nan());
+    }
+
+    #[test]
+    fn test_min_max_signed_zero() {
+        let pos_zero = f16::ZERO;
+        let neg_zero = f16::NEG_ZERO;
+
+        assert_eq!(pos_zero.min(neg_zero).to_bits(), neg_zero.to_bits());
+        assert_eq!(neg_zero.min(pos_zero).to_bits(), neg_zero.to_bits());
+        assert_eq!(pos_zero.min(pos_zero).to_bits(), pos_zero.to_bits());
+        assert_eq!(neg_zero.min(neg_zero).to_bits(), neg_zero.to_bits());
+
+        assert_eq!(pos_zero.max(neg_zero).to_bits(), pos_zero.to_bits());
+        assert_eq!(neg_zero.max(pos_zero).to_bits(), pos_zero.to_bits());
+        assert_eq!(pos_zero.max(pos_zero).to_bits(), pos_zero.to_bits());
+        assert_eq!(neg_zero.max(neg_zero).to_bits(), neg_zero.to_bits());
     }
 }
